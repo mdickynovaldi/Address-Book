@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Address Book</title>
-    <script src="app.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body
@@ -13,9 +12,9 @@
     <!-- Navbar -->
     <nav class="w-full md:w-64">
       <div class="container flex flex-row md:flex-col gap-4 md:gap-10">
-        <a href="#" class="text-2xl md:text-3xl font-bold text-white"
-          >Address Book</a
-        >
+        <a href="#" class="text-2xl md:text-3xl font-bold text-white">
+          Address Book
+        </a>
         <div class="flex md:flex-col gap-4">
           <a
             class="text-white hover:bg-orange-700 flex gap-2 border-2 border-white w-full p-2 md:p-3 rounded-md text-sm md:text-base"
@@ -45,11 +44,12 @@
     <!-- End Navbar -->
 
     <div class="container flex flex-col gap-6 md:gap-10 w-full">
-      <!-- Add Contact -->
+      <!-- Add Contact Form -->
       <div class="bg-white p-4 rounded-md">
         <h1 class="text-2xl md:text-3xl text-center font-bold mb-4">
           Add Contact
         </h1>
+
         <form action="">
           <div class="flex flex-col gap-2">
             <input
@@ -73,18 +73,20 @@
               class="p-2 rounded-md border border-gray-300"
             />
           </div>
+
+          <button
+            type="submit"
+            class="bg-orange-700 text-white p-2 rounded-md hover:bg-orange-600 transition duration-300"
+          >
+            Add Contact
+          </button>
         </form>
       </div>
-      <button
-        class="bg-orange-700 text-white p-2 rounded-md hover:bg-orange-600 transition duration-300"
-      >
-        Add Contact
-      </button>
-      <!-- End Add Contact -->
+      <!-- End Add Contact Form -->
 
       <!-- List Contact -->
       <div class="bg-white p-4 rounded-md flex flex-col gap-6 md:gap-10">
-        <h1 class="text-2xl md:text-3xl text-center font-bold">Contact List</h1>
+        <h1 class="text-2xl md:text-3xl text-center font-bold">Contacts (3)</h1>
         <div class="overflow-x-auto">
           <table class="min-w-full bg-white">
             <thead class="bg-orange-700 text-white text-left">
@@ -118,5 +120,8 @@
       </div>
       <!-- End List Contact -->
     </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>

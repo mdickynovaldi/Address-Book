@@ -7,7 +7,8 @@ The Address Book Website is a web application that allows users to store, manage
 ## Technologies Used
 
 - HTML: For the structure and content of the web page.
-- Tailwind: For styling and layout of the web page.
+- CSS: For styling and layout of the web page.
+  - Tailwind CSS: For styling and layout of the web page.
 - JavaScript: For interactivity and dynamic functionality.
 
 ## Project Structure
