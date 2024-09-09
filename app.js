@@ -1,64 +1,57 @@
-const addressBook = {
-  contacts: [
-    {
-      id: 1,
-      photoUrl: "https://api.dicebear.com/9.x/initials/svg?seed=John%20Doe",
-      fullName: "John Doe",
-      nickName: "John",
-      phone: "1234567890",
-      emails: [
-        {
-          id: 1,
-          email: "john@example.com",
-          type: "work",
-        },
-        {
-          id: 2,
-          email: "john2@example.com",
-          type: "personal",
-        },
-      ],
-      address: "1234 Main St, Anytown, USA",
-      affiliations: [
-        {
-          id: 1,
-          company: "John Doe Company",
-          jobTitle: "Software Engineer",
-        },
-      ],
-      notes: "",
-    },
-    {
-      id: 2,
-      fullName: "Jane Smith",
-      phone: "0987654321",
-      email: "jane@example.com",
-      address: "5678 Oak Ave, Other City, USA",
-    },
-  ],
-};
+const contactList = document.getElementById("contact-list");
+const h1 = document.getElementById("contact-title-list");
 
-function renderContacts(contacts) {
-  const sortedContacts = sortContacts(contacts);
+// Fungsi untuk merender daftar kontak ke tabel
+function renderContacts() {
+  h1.textContent = `Contacts (${addressBook.contacts.length})`;
 
-  console.log(sortedContacts);
-}
+  const sortedContacts = addressBook.contacts.sort((a, b) => {
+    return a.nickName.localeCompare(b.nickName);
+  });
 
-function sortContacts(contacts) {
-  return contacts.sort((a, b) => {
-    return a.fullName.localeCompare(b.fullName);
+  addressBook.contacts.forEach((contact, index) => {
+    const row = document.createElement("tr");
+    row.classList.add("border-b");
+    row.classList.add("hover:bg-gray-100");
+
+    row.innerHTML = `
+        <td class="py-2 px-4">${index + 1}</td>
+        <td class="py-2 px-4"><img src="${contact.photoUrl}"
+        alt="${contact.fullName}" class="w-12 h-12 rounded-full"></td>
+        <td class="py-2 px-4">${contact.fullName}</td>
+        <td class="py-2 px-4">${contact.nickName}</td>
+        <td class="py-2 px-4">${contact.phone}</td>
+        <td class="py-2 px-4">
+        ${(() => {
+          let emailHtml = "";
+          for (let email of contact.emails) {
+            emailHtml = `<div>${email.email} (${email.type})</div>`;
+          }
+          return emailHtml;
+        })()}
+        </td>
+        <td class="py-2 px-4">${contact.address}</td>
+        <td class="py-2 px-4">
+          ${contact.affiliations
+            .map((affiliation) => affiliation.company)
+            .join(", ")}
+        </td>
+        <td class="py-2 px-4">
+          ${contact.affiliations
+            .map((affiliation) => affiliation.jobTitle)
+            .join(", ")}
+        </td>
+        <td class="py-2 px-4">${contact.birthday}</td>
+        <td class="py-2 px-4">${contact.notes}</td>
+        <td class="py-2 px-4">
+          <button class="bg-blue-500 text-white px-2 py-1 rounded-md">Edit</button>
+          <button class="delete-btn bg-red-500 text-white px-2 py-1 rounded-md">Delete</button>
+        </td>
+      `;
+    // Tambahkan row ke tbody
+    contactList.appendChild(row);
   });
 }
 
-function addContact(contact) {}
-
-function searchContacts(keyword) {}
-
-const exampleContact = `
-  👤 Elon Musk
-  💼 CEO at Tesla, SpaceX
-  📞 +1234567890, +1321546890
-  📧 Emails: elon@tesla.com (Work), elon@spacex.com (Personal)
-`;
-
-renderContacts(addressBook.contacts);
+// Panggil fungsi untuk merender kontak saat halaman dimuat
+renderContacts();
