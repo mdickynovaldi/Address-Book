@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Address Book</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-gray-800 p-4 md:p-8 lg:p-14 flex flex-col md:flex-row gap-6 md:gap-10"
+  >
+    <!-- Navbar -->
+    <nav class="w-full md:w-64">
+      <div class="container flex flex-row gap-4 md:flex-col md:gap-10">
+        <a href="/" class="text-2xl md:text-3xl font-bold text-white">
+          Address Book
+        </a>
+        <div class="flex md:flex-col gap-4">
+          <a
+            class="text-white hover:bg-orange-700 flex gap-2 border-2 border-white w-full p-2 md:p-3 rounded-md text-sm md:text-base"
+            href="/new/"
+          >
+            <img
+              src="/assets/icons/plus.svg"
+              alt="Add Icon"
+              class="w-4 h-4 md:w-6 md:h-6"
+            />
+            <span class="hidden md:inline">Add Contact</span>
+          </a>
+          <a
+            class="text-white hover:bg-orange-700 flex gap-2 border-2 border-white w-full p-2 md:p-3 rounded-md text-sm md:text-base"
+            href="/contact/"
+          >
+            <img
+              src="/assets/icons/person.svg"
+              alt="Person Icon"
+              class="w-4 h-4 md:w-6 md:h-6"
+            />
+            <span class="hidden md:inline">Contact</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <div class="container flex flex-col gap-6 md:gap-10 w-full">
+      <div class="flex flex-col gap-6 md:gap-10">
+        
+
+      <!-- List Contact -->
+      <div class="bg-white p-4 rounded-md flex flex-col gap-6 md:gap-10">
+        <h1
+          id="contact-title-list"
+          class="text-2xl md:text-3xl text-center font-bold"
+        >
+          Contact (3)
+        </h1>
+        <div class="overflow-x-auto">
+          <table class="min-w-full bg-white">
+            <thead class="bg-orange-700 text-white text-left">
+              <tr>
+                <th class="py-2 px-4">No</th>
+                <th class="py-2 px-4">Photo</th>
+                <th class="py-2 px-4">Name</th>
+                <th class="py-2 px-4  ">Nick Name</th>
+                <th class="py-2 px-4  ">Telepon</th>
+                <th class="py-2 px-4  ">Email</th>
+                <th class="py-2 px-4  ">Address</th>
+                <th class="py-2 px-4  ">Affiliation</th>
+                <th class="py-2 px-4  ">Job Title</th>
+                <th class="py-2 px-4  ">Birthday</th>
+                <th class="py-2 px-4  ">Notes</th>
+                <th class="py-2 px-4">Action</th>
+              </tr>
+            </thead>
+            <tbody id="contact-list"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- End List Contact -->
+
+    <script src="/data.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>
