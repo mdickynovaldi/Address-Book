@@ -65,8 +65,6 @@ function addContact() {
     ],
   };
 
-  console.log({ newContact });
-
   addressBook.contacts = [...addressBook.contacts, newContact];
 }
 
