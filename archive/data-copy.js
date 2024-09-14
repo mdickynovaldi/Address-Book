@@ -125,33 +125,3 @@ const addressBook = {
     },
   ],
 };
-
-const newContact = {
-  id: 5,
-  photoUrl: "https://api.dicebear.com/9.x/initials/svg?seed=Elon%20Musk",
-  fullName: "Elon Musk",
-  nickName: "Elon",
-  phone: "9876543210",
-  emails: [
-    {
-      id: 1,
-      email: "elon.musk@work.com",
-      type: "work",
-    },
-    {
-      id: 2,
-      email: "elon.musk@gmail.com",
-      type: "personal",
-    },
-  ],
-  address: "Jl. Merdeka No. 45, Bandung, Indonesia",
-  birthday: "1990-02-20",
-  affiliations: [
-    {
-      id: 1,
-      company: "PT. SpaceX",
-      jobTitle: "CEO",
-    },
-  ],
-  notes: "Seorang Project Manager berpengalaman",
-};
