@@ -1,15 +1,56 @@
-const contact = {
-  id: 1,
-  name: "Elon Musk",
-  birthdate: new Date("1970-01-01"),
-};
+async function fetchData() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const data = await response.json();
+    localStorage.setItem("example", JSON.stringify(data));
+    console.log(data);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+async function postData() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      body: JSON.stringify({
+        title: "foo",
+        body: "bar",
+        userId: 1,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
+    const json = await response.json();
+    console.log(json);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+async function deleteData(id) {
+  try {
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/posts/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
+    const json = await response.json();
+    console.log(response);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+fetchData();
 
 console.log(contact);
 
-const stringifiedContact = JSON.stringify(contact);
+// Menyimpan ke localStorage
 
-localStorage.setItem("example", stringifiedContact);
-
+// Mengambil data dari localStorage
 const example = JSON.parse(localStorage.getItem("example"));
 
 console.log(example);

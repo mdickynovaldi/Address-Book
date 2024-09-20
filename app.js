@@ -3,6 +3,16 @@ function showContacts() {
 
   addressBook.contacts.forEach((contact) => {
     console.log(`${contact.fullName} (${contact.nickName})`);
+    console.log(contact.phone);
+    console.log(contact.emails[contact.emails.length - 1].email);
+    console.log(contact.address);
+    console.log(contact.birthday);
+    console.log(contact.affiliations[contact.affiliations.length - 1].company);
+    console.log(contact.affiliations[contact.affiliations.length - 1].jobTitle);
+    console.log(contact.photoUrl);
+    console.log(contact.notes);
+    console.log("====================================");
+
     console.log(contact);
     // TODO: Show formatted contact info as string
   });
@@ -15,29 +25,29 @@ function sortContacts() {
 }
 
 function addContact() {
-  const fullName = prompt("Enter full name:");
-  if (!fullName) return;
+  // const fullName = prompt("Enter full name:");
+  // if (!fullName) return;
 
-  const nickName = prompt("Enter nick name:");
-  if (!nickName) return;
+  // const nickName = prompt("Enter nick name:");
+  // if (!nickName) return;
 
-  const phone = prompt("Enter phone:");
-  if (!phone) return;
+  // const phone = prompt("Enter phone:");
+  // if (!phone) return;
 
-  const email = prompt("Enter email:");
-  if (!email) return;
+  // const email = prompt("Enter email:");
+  // if (!email) return;
 
-  const address = prompt("Enter address:");
-  if (!address) return;
+  // const address = prompt("Enter address:");
+  // if (!address) return;
 
-  const birthday = prompt("Enter birthday (YYYY-MM-DD):");
-  if (!birthday) return;
+  // const birthday = prompt("Enter birthday (YYYY-MM-DD):");
+  // if (!birthday) return;
 
-  const affiliationCompany = prompt("Enter affiliation company:");
-  if (!affiliationCompany) return;
+  // const affiliationCompany = prompt("Enter affiliation company:");
+  // if (!affiliationCompany) return;
 
-  const affiliationJobTitle = prompt("Enter affiliation company's job title:");
-  if (!affiliationJobTitle) return;
+  // const affiliationJobTitle = prompt("Enter affiliation company's job title:");
+  // if (!affiliationJobTitle) return;
 
   const nextId = addressBook.contacts[addressBook.contacts.length - 1].id + 1;
 
