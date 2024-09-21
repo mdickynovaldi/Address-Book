@@ -1,7 +1,7 @@
 {
   "contacts": [
     {
-      "id": 1,
+      "id": "1",
       "photoUrl": "https://api.dicebear.com/9.x/initials/svg?seed=Agus",
       "fullName": "Mochammad Agus Salim",
       "nickName": "Agus",

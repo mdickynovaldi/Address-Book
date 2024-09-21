@@ -1,13 +1,9 @@
 // const BACKEND_API_URL = "https://my-json-server.typicode.com/mdickynovaldi/address-book";
 const BACKEND_API_URL = "http://localhost:3000";
 
-let contacts = [];
-
 const contactFormElement = document.getElementById("contact-form");
 const contactListTableBodyElement = document.getElementById("contact-list");
 const contactsCountElement = document.getElementById("contacts-count");
-
-contactFormElement.addEventListener("submit", addNewContact);
 
 async function getContacts() {
   try {
@@ -21,8 +17,6 @@ async function getContacts() {
 
 async function addNewContact(event) {
   event.preventDefault();
-
-  console.log("add new contact");
 
   const formData = new FormData(contactFormElement);
 
@@ -41,16 +35,24 @@ async function addNewContact(event) {
     notes: formData.get("notes"),
   };
 
-  console.log({ newContactData });
-
   const response = await fetch(`${BACKEND_API_URL}/contacts`, {
     method: "POST",
-    headers: { "Content-type": "application/json; charset=UTF-8" },
+    headers: { "Content-type": "application/json" },
     body: JSON.stringify(newContactData),
   });
 
   const newContact = await response.json();
-  console.log({ newContact });
+
+  renderContacts();
+}
+
+async function deleteContactById(id) {
+  const response = await fetch(
+    `https://jsonplaceholder.typicode.com/posts${id}`,
+    { method: "DELETE" }
+  );
+  const json = await response.json();
+  console.log(json);
 }
 
 async function renderContacts() {
@@ -75,7 +77,7 @@ async function renderContacts() {
       <button onclick="deleteContactById(${contact.id})" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
         Hapus
       </button>
-      <button onclick="deleteContactById(${contact.id})" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+      <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
         Edit
       </button>
     </td>
@@ -83,13 +85,6 @@ async function renderContacts() {
   });
 }
 
-async function deleteContactById(id) {
-  const response = await fetch(
-    `https://jsonplaceholder.typicode.com/posts${id}`,
-    { method: "DELETE" }
-  );
-  const json = await response.json();
-  console.log(json);
-}
+contactFormElement.addEventListener("submit", addNewContact);
 
 renderContacts();
