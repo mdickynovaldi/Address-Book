@@ -54,7 +54,7 @@
             Add Contact
           </h1>
 
-          <form action="" class="flex flex-col gap-4">
+          <form action="" class="flex flex-col gap-4" id="contact-form">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <input
                 type="text"
@@ -81,39 +81,41 @@
                   type="text"
                   placeholder="Phone"
                   class="p-2 rounded-md border border-gray-300 w-full"
-                  name="phones[]"
+                  name="phones"
+                  id="phone"
                 />
               </div>
             </div>
-            <button
-              type="button"
-              id="add-phone"
-              class="bg-gray-300 text-black p-2 rounded-md hover:bg-gray-200 transition duration-300"
-            >
-              Add Another Phone
-            </button>
+
             <div id="email-container" class="flex flex-col gap-2">
               <div class="flex gap-2">
                 <input
                   type="email"
                   placeholder="Email"
                   class="p-2 rounded-md border border-gray-300 w-full"
-                  name="emails[]"
+                  name="emails"
+                  id="email"
                 />
               </div>
             </div>
-            <button
-              type="button"
-              id="add-email"
-              class="bg-gray-300 text-black p-2 rounded-md hover:bg-gray-200 transition duration-300"
-            >
-              Add Another Email
-            </button>
+
             <input
               type="text"
               placeholder="Address"
               class="p-2 rounded-md border border-gray-300 w-full"
               id="address"
+            />
+            <input
+              type="text"
+              placeholder="Affiliation"
+              class="p-2 rounded-md border border-gray-300 w-full"
+              id="affiliation"
+            />
+            <input
+              type="text"
+              placeholder="Job Title"
+              class="p-2 rounded-md border border-gray-300 w-full"
+              id="job-title"
             />
             <input
               class="p-2 rounded-md border border-gray-300 w-full"
@@ -130,6 +132,7 @@
             <button
               type="submit"
               class="bg-orange-700 text-white p-2 hover:bg-orange-600 transition duration-300 rounded-md md:w-auto"
+              onclick="postData()"
             >
               Add Contact
             </button>
@@ -144,7 +147,7 @@
           id="contact-title-list"
           class="text-2xl md:text-3xl text-center font-bold"
         >
-          Contact (3)
+          Contact (0)
         </h1>
         <div class="overflow-x-auto">
           <table class="min-w-full bg-white">
