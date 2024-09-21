@@ -1,60 +1,52 @@
+// const BACKEND_API_URL = "https://my-json-server.typicode.com/mdickynovaldi/address-book";
+const BACKEND_API_URL = "http://localhost:3000";
+
+let contacts = [];
+
+const contactFormElement = document.getElementById("contact-form");
+
 async function showContacts() {
   try {
-    const response = await fetch(
-      "https://my-json-server.typicode.com/mdickynovaldi/address-book/db"
-    );
-    const data = await response.json();
-    console.log(data);
-    const contactList = document.getElementById("contact-list");
+    const response = await fetch(`${BACKEND_API_URL}/contacts`);
+    const contacts = await response.json();
   } catch (error) {
     console.error("Error:", error);
   }
 }
 
-async function postData() {
-  document
-    .getElementById("contact-form")
-    .addEventListener("submit", function (event) {
-      event.preventDefault();
-    });
+async function addNewContact(event) {
+  event.preventDefault();
 
-  const fullName =
-    document.getElementById("first-name").value +
-    " " +
-    document.getElementById("last-name").value;
-  const nickName = document.getElementById("nick-name").value;
-  const phone = document.getElementById("phone").value;
-  const email = document.getElementById("email").value;
-  const address = document.getElementById("address").value;
-  const birthday = document.getElementById("birthday").value;
-  const note = document.getElementById("notes").value;
-  const affiliationCompany = document.getElementById("affiliation").value;
-  const affiliationJobTitle = document.getElementById("job-title").value;
+  console.log("add new contact");
+
+  const formData = new FormData(contactFormElement);
+
+  const newContactData = {
+    photoUrl: `https://api.dicebear.com/9.x/initials/svg?seed=${formData.get(
+      "first-name"
+    )}`,
+    fullName: `${formData.get("first-name")} ${formData.get("last-name")}`,
+    nickName: formData.get("nick-name"),
+    phone: formData.get("phone"),
+    email: formData.get("email"),
+    address: formData.get("address"),
+    birthday: new Date(formData.get("birthday")),
+    affiliation: formData.get("affiliation"),
+    jobTitle: formData.get("job-title"),
+    notes: formData.get("notes"),
+  };
+
+  console.log({ newContactData });
 
   try {
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+    const response = await fetch(`${BACKEND_API_URL}/contacts`, {
       method: "POST",
-      body: JSON.stringify({
-        photoUrl: `https://api.dicebear.com/9.x/initials/svg?seed=${fullName}`,
-        fullName: fullName,
-        nickName: nickName,
-        phone: phone,
-        emails: email,
-        address: address,
-        birthday: birthday,
-        affiliations: affiliationCompany,
-        affiliationJobTitle: affiliationJobTitle,
-        note: note,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
+      headers: { "Content-type": "application/json; charset=UTF-8" },
+      body: JSON.stringify(newContactData),
     });
 
-    const json = await response.json();
-    console.log(json);
-
-    addContactToTable(json);
+    const newContact = await response.json();
+    console.log({ newContact });
   } catch (error) {
     console.error("Error:", error);
   }
@@ -92,12 +84,12 @@ function addContactToTable(contact) {
 async function deleteContactById(id) {
   const response = await fetch(
     `https://jsonplaceholder.typicode.com/posts${id}`,
-    {
-      method: "DELETE",
-    }
+    { method: "DELETE" }
   );
   const json = await response.json();
   console.log(json);
 }
+
+contactFormElement.addEventListener("submit", addNewContact);
 
 showContacts();

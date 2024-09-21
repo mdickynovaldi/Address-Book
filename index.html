@@ -53,27 +53,35 @@
           >
             Add Contact
           </h1>
-
-          <form action="" class="flex flex-col gap-4" id="contact-form">
+          <form class="flex flex-col gap-4" id="contact-form">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <input
-                type="text"
-                placeholder="First Name"
-                class="p-2 rounded-md border border-gray-300 w-full"
-                id="first-name"
-              />
-              <input
-                type="text"
-                placeholder="Last Name"
-                class="p-2 rounded-md border border-gray-300 w-full"
-                id="last-name"
-              />
+              <div>
+                <label for="first-name" hidden>First Name</label>
+                <input
+                  id="first-name"
+                  name="first-name"
+                  type="text"
+                  placeholder="First Name"
+                  class="p-2 rounded-md border border-gray-300 w-full"
+                />
+              </div>
+              <div>
+                <label for="last-name" hidden>Last Name</label>
+                <input
+                  id="last-name"
+                  name="last-name"
+                  type="text"
+                  placeholder="Last Name"
+                  class="p-2 rounded-md border border-gray-300 w-full"
+                />
+              </div>
             </div>
             <input
               type="text"
               placeholder="Nick Name"
               class="p-2 rounded-md border border-gray-300 w-full"
               id="nick-name"
+              name="nick-name"
             />
             <div id="phone-container" class="flex flex-col gap-2">
               <div>
@@ -81,7 +89,7 @@
                   type="text"
                   placeholder="Phone"
                   class="p-2 rounded-md border border-gray-300 w-full"
-                  name="phones"
+                  name="phone"
                   id="phone"
                 />
               </div>
@@ -93,7 +101,7 @@
                   type="email"
                   placeholder="Email"
                   class="p-2 rounded-md border border-gray-300 w-full"
-                  name="emails"
+                  name="email"
                   id="email"
                 />
               </div>
@@ -104,18 +112,21 @@
               placeholder="Address"
               class="p-2 rounded-md border border-gray-300 w-full"
               id="address"
+              name="address"
             />
             <input
               type="text"
               placeholder="Affiliation"
               class="p-2 rounded-md border border-gray-300 w-full"
               id="affiliation"
+              name="affiliation"
             />
             <input
               type="text"
               placeholder="Job Title"
               class="p-2 rounded-md border border-gray-300 w-full"
               id="job-title"
+              name="job-title"
             />
             <input
               class="p-2 rounded-md border border-gray-300 w-full"
@@ -127,12 +138,12 @@
               placeholder="Notes"
               class="p-2 rounded-md border border-gray-300 w-full"
               id="notes"
+              name="notes"
               rows="4"
             ></textarea>
             <button
               type="submit"
               class="bg-orange-700 text-white p-2 hover:bg-orange-600 transition duration-300 rounded-md md:w-auto"
-              onclick="postData()"
             >
               Add Contact
             </button>
@@ -174,7 +185,6 @@
     </div>
     <!-- End List Contact -->
 
-    <script src="data.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

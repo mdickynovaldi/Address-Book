@@ -2,11 +2,94 @@
   "contacts": [
     {
       "id": 1,
+      "photoUrl": "https://api.dicebear.com/9.x/initials/svg?seed=Agus",
       "fullName": "Mochammad Agus Salim",
-      "nickName": "Agus"
+      "nickName": "Agus",
+      "phone": "+1234567890",
+      "email": "agus@gmail.com",
+      "address": "Jl. Raya No. 1, Jakarta, Indonesia",
+      "birthday": "2000-01-01",
+      "affiliation": "PT. ABC",
+      "jobTitle": "Software Engineer",
+      "notes": "Dia adalah seorang software engineer"
+    },
+    {
+      "id": "69d8",
+      "photoUrl": "https://api.dicebear.com/9.x/initials/svg?seed=Elon",
+      "fullName": "Elon Musk",
+      "nickName": "Elon",
+      "phone": "+1928918291",
+      "email": "elon@tesla.com",
+      "address": "Calisdfopso",
+      "birthday": "1991-01-01T00:00:00.000Z",
+      "affiliation": "Tesl",
+      "jobTitle": "CEO",
+      "notes": "asasdasdas"
+    },
+    {
+      "id": "b994",
+      "photoUrl": "https://api.dicebear.com/9.x/initials/svg?seed=",
+      "fullName": " ",
+      "nickName": "",
+      "phone": "",
+      "email": "",
+      "address": "",
+      "birthday": null,
+      "affiliation": "",
+      "jobTitle": "",
+      "notes": ""
+    },
+    {
+      "id": "808f",
+      "photoUrl": "https://api.dicebear.com/9.x/initials/svg?seed=",
+      "fullName": " ",
+      "nickName": "",
+      "phone": "",
+      "email": "",
+      "address": "",
+      "birthday": null,
+      "affiliation": "",
+      "jobTitle": "",
+      "notes": ""
+    },
+    {
+      "id": "47ae",
+      "photoUrl": "https://api.dicebear.com/9.x/initials/svg?seed=",
+      "fullName": " ",
+      "nickName": "",
+      "phone": "",
+      "email": "",
+      "address": "",
+      "birthday": null,
+      "affiliation": "",
+      "jobTitle": "",
+      "notes": ""
+    },
+    {
+      "id": "7bc4",
+      "photoUrl": "https://api.dicebear.com/9.x/initials/svg?seed=",
+      "fullName": " ",
+      "nickName": "",
+      "phone": "",
+      "email": "",
+      "address": "",
+      "birthday": null,
+      "affiliation": "",
+      "jobTitle": "",
+      "notes": ""
+    },
+    {
+      "id": "d735",
+      "photoUrl": "https://api.dicebear.com/9.x/initials/svg?seed=",
+      "fullName": " ",
+      "nickName": "",
+      "phone": "",
+      "email": "",
+      "address": "",
+      "birthday": null,
+      "affiliation": "",
+      "jobTitle": "",
+      "notes": ""
     }
-  ],
-  "profile": {
-    "name": "mdickynovaldi"
-  }
+  ]
 }
