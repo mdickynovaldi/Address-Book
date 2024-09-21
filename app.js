@@ -1,13 +1,7 @@
 async function showContacts() {
   try {
-    const response = await fetch(
-      "https://my-json-server.typicode.com/mdickynovaldi/address-book/contacts/"
-    );
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
     const data = await response.json();
-
-    data.sort((previous, next) => {
-      return previous.fullName.localeCompare(next.fullName);
-    });
 
     console.log(data);
   } catch (error) {
@@ -36,27 +30,24 @@ async function postData() {
   const affiliationJobTitle = document.getElementById("job-title").value;
 
   try {
-    const response = await fetch(
-      "https://my-json-server.typicode.com/mdickynovaldi/address-book/contacts/",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          photoUrl: `https://api.dicebear.com/9.x/initials/svg?seed=${fullName}`,
-          fullName: fullName,
-          nickName: nickName,
-          phone: phone,
-          emails: email,
-          address: address,
-          birthday: birthday,
-          affiliations: affiliationCompany,
-          affiliationJobTitle: affiliationJobTitle,
-          note: note,
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      }
-    );
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      body: JSON.stringify({
+        photoUrl: `https://api.dicebear.com/9.x/initials/svg?seed=${fullName}`,
+        fullName: fullName,
+        nickName: nickName,
+        phone: phone,
+        emails: email,
+        address: address,
+        birthday: birthday,
+        affiliations: affiliationCompany,
+        affiliationJobTitle: affiliationJobTitle,
+        note: note,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
     const json = await response.json();
     console.log(json);
 
@@ -97,7 +88,7 @@ function addContactToTable(contact) {
 
 async function deleteContactById(id) {
   const response = await fetch(
-    `https://my-json-server.typicode.com/mdickynovaldi/address-book/contacts/${id}`,
+    `https://jsonplaceholder.typicode.com/posts${id}`,
     {
       method: "DELETE",
     }
