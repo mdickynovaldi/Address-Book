@@ -4,11 +4,16 @@ const BACKEND_API_URL = "http://localhost:3000";
 let contacts = [];
 
 const contactFormElement = document.getElementById("contact-form");
+const contactListTableBodyElement = document.getElementById("contact-list");
+const contactsCountElement = document.getElementById("contacts-count");
 
-async function showContacts() {
+contactFormElement.addEventListener("submit", addNewContact);
+
+async function getContacts() {
   try {
     const response = await fetch(`${BACKEND_API_URL}/contacts`);
     const contacts = await response.json();
+    return contacts;
   } catch (error) {
     console.error("Error:", error);
   }
@@ -38,36 +43,34 @@ async function addNewContact(event) {
 
   console.log({ newContactData });
 
-  try {
-    const response = await fetch(`${BACKEND_API_URL}/contacts`, {
-      method: "POST",
-      headers: { "Content-type": "application/json; charset=UTF-8" },
-      body: JSON.stringify(newContactData),
-    });
+  const response = await fetch(`${BACKEND_API_URL}/contacts`, {
+    method: "POST",
+    headers: { "Content-type": "application/json; charset=UTF-8" },
+    body: JSON.stringify(newContactData),
+  });
 
-    const newContact = await response.json();
-    console.log({ newContact });
-  } catch (error) {
-    console.error("Error:", error);
-  }
+  const newContact = await response.json();
+  console.log({ newContact });
 }
 
-function addContactToTable(contact) {
-  const contactList = document.getElementById("contact-list");
-  const row = document.createElement("tr");
+async function renderContacts() {
+  const contacts = await getContacts();
 
-  row.innerHTML = `
+  contactsCountElement.innerText = contacts.length;
+
+  contactListTableBodyElement.innerHTML = contacts.map((contact) => {
+    return `<tr>
     <td class="py-2 px-4">${contact.id}</td>
     <td class="py-2 px-4"><img src="${contact.photoUrl}" alt="Photo" class="w-10 h-10 rounded-full"/></td>
     <td class="py-2 px-4">${contact.fullName}</td>
     <td class="py-2 px-4 hidden md:table-cell">${contact.nickName}</td>
     <td class="py-2 px-4 hidden md:table-cell">${contact.phone}</td>
-    <td class="py-2 px-4 hidden md:table-cell">${contact.emails}</td>
+    <td class="py-2 px-4 hidden md:table-cell">${contact.email}</td>
     <td class="py-2 px-4 hidden md:table-cell">${contact.address}</td>
-    <td class="py-2 px-4 hidden md:table-cell">${contact.affiliations}</td>
-    <td class="py-2 px-4 hidden md:table-cell">${contact.affiliationJobTitle}</td>
+    <td class="py-2 px-4 hidden md:table-cell">${contact.affiliation}</td>
+    <td class="py-2 px-4 hidden md:table-cell">${contact.jobTitle}</td>
     <td class="py-2 px-4 hidden md:table-cell">${contact.birthday}</td>
-    <td class="py-2 px-4 hidden md:table-cell">${contact.note}</td>
+    <td class="py-2 px-4 hidden md:table-cell">${contact.notes}</td>
     <td class="py-2 px-4">
       <button onclick="deleteContactById(${contact.id})" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
         Hapus
@@ -76,9 +79,8 @@ function addContactToTable(contact) {
         Edit
       </button>
     </td>
-  `;
-
-  contactList.appendChild(row);
+  </tr>`;
+  });
 }
 
 async function deleteContactById(id) {
@@ -90,6 +92,4 @@ async function deleteContactById(id) {
   console.log(json);
 }
 
-contactFormElement.addEventListener("submit", addNewContact);
-
-showContacts();
+renderContacts();
