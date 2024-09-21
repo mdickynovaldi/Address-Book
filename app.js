@@ -1,9 +1,11 @@
 async function showContacts() {
   try {
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const response = await fetch(
+      "https://my-json-server.typicode.com/mdickynovaldi/address-book/db"
+    );
     const data = await response.json();
-
     console.log(data);
+    const contactList = document.getElementById("contact-list");
   } catch (error) {
     console.error("Error:", error);
   }
@@ -48,6 +50,7 @@ async function postData() {
         "Content-type": "application/json; charset=UTF-8",
       },
     });
+
     const json = await response.json();
     console.log(json);
 
