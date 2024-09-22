@@ -2,16 +2,58 @@
   "contacts": [
     {
       "id": "1",
-      "photoUrl": "https://api.dicebear.com/9.x/initials/svg?seed=Agus",
-      "fullName": "Mochammad Agus Salim",
-      "nickName": "Agus",
-      "phone": "+1234567890",
-      "email": "agus@gmail.com",
-      "address": "Jl. Raya No. 1, Jakarta, Indonesia",
-      "birthday": "2000-01-01",
-      "affiliation": "PT. ABC",
-      "jobTitle": "Software Engineer",
-      "notes": "Dia adalah seorang software engineer"
+      "photoUrl": "https://api.dicebear.com/9.x/initials/svg?seed=Moch",
+      "fullName": "Moch Novaldi",
+      "nickName": "Kynov",
+      "phone": "085156262400",
+      "email": "mochdickynovaldi@gmail.com",
+      "address": "Song Song singosari",
+      "birthday": "0424-02-24T00:00:00.000Z",
+      "affiliation": "inovasiin",
+      "jobTitle": "ceo",
+      "notes": "24"
+    },
+    {
+      "id": "2",
+      "photoUrl": "https://api.dicebear.com/9.x/initials/svg?seed=zahra",
+      "fullName": "zahra Firdaus",
+      "nickName": "Kynov",
+      "phone": "085156262400",
+      "email": "test@example.us",
+      "address": "Song Song singosari",
+      "birthday": "2000-02-24T00:00:00.000Z",
+      "affiliation": "inovasiin",
+      "jobTitle": "ceo",
+      "notes": "hai"
+    },
+    {
+      "id": "3",
+      "photoUrl": "https://api.dicebear.com/9.x/initials/svg?seed=Norman",
+      "fullName": "Norman Huda",
+      "nickName": "Huda",
+      "phone": "624127142788",
+      "email": "Huda@gmail.com",
+      "address": "malang",
+      "birthday": "2000-02-24T00:00:00.000Z",
+      "affiliation": "Inovasiin",
+      "jobTitle": "CEO",
+      "notes": "Aku Huda"
+    },
+    {
+      "id": "4",
+      "photoUrl": "https://api.dicebear.com/9.x/initials/svg?seed=Yuliani",
+      "fullName": "Yuliani Novaldi",
+      "nickName": "Kynov",
+      "phone": "085156262400",
+      "email": "wooshmentari@gmail.com",
+      "address": "Song Song singosari",
+      "birthday": "+052525-02-24T17:00:00.000Z",
+      "affiliation": "qq",
+      "jobTitle": "ceo",
+      "notes": "halo"
     }
-  ]
+  ],
+  "profile": {
+    "name": "typicode"
+  }
 }

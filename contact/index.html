@@ -51,8 +51,22 @@
             id="contact-title-list"
             class="text-2xl md:text-3xl text-center font-bold"
           >
-            Contact (3)
+            Contact (<span id="contact-count">0</span>)
           </h1>
+          <div class="flex gap-2">
+            <input
+              type="text"
+              placeholder="Search"
+              class="p-2 rounded-md border border-gray-300 w-full"
+              id="search-input"
+            />
+            <button
+              onclick="searchContact()"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Cari
+            </button>
+          </div>
           <div class="overflow-x-auto">
             <table class="min-w-full bg-white">
               <thead class="bg-orange-700 text-white text-left">
