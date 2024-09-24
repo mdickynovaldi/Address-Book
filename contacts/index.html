@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Address Book</title>
+    <title>All Contacst - Address Book</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body
@@ -18,7 +18,7 @@
         <div class="flex md:flex-col gap-4">
           <a
             class="text-white hover:bg-orange-700 flex gap-2 border-2 border-white w-full p-2 md:p-3 rounded-md text-sm md:text-base"
-            href="/new/"
+            href="/contacts/new"
           >
             <img
               src="/assets/icons/plus.svg"
@@ -29,7 +29,7 @@
           </a>
           <a
             class="text-white hover:bg-orange-700 flex gap-2 border-2 border-white w-full p-2 md:p-3 rounded-md text-sm md:text-base"
-            href="/contact/"
+            href="/contacts/"
           >
             <img
               src="/assets/icons/person.svg"
@@ -47,26 +47,26 @@
       <div class="flex flex-col gap-6 md:gap-10">
         <!-- List Contact -->
         <div class="bg-white p-4 rounded-md flex flex-col gap-6 md:gap-10">
-          <h1
-            id="contact-title-list"
-            class="text-2xl md:text-3xl text-center font-bold"
-          >
-            Contact (<span id="contact-count">0</span>)
+          <h1 class="text-2xl md:text-3xl text-center font-bold">
+            All Contacts (<span id="contacts-count">0</span>)
           </h1>
-          <div class="flex gap-2">
+
+          <form class="flex gap-2" method="get">
             <input
-              type="text"
+              name="q"
+              type="search"
               placeholder="Search"
               class="p-2 rounded-md border border-gray-300 w-full"
-              id="search-input"
+              id="search-keyword"
             />
             <button
-              onclick="searchContact()"
+              type="submit"
               class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             >
-              Find
+              Search
             </button>
-          </div>
+          </form>
+
           <div class="overflow-x-auto">
             <table class="min-w-full bg-white">
               <thead class="bg-orange-700 text-white text-left">
@@ -85,7 +85,7 @@
                   <th class="py-2 px-4">Action</th>
                 </tr>
               </thead>
-              <tbody id="contact-list"></tbody>
+              <tbody id="contacts"></tbody>
             </table>
           </div>
         </div>
@@ -94,5 +94,8 @@
     <!-- End List Contact -->
 
     <script src="/app.js"></script>
+    <script>
+      renderContacts();
+    </script>
   </body>
 </html>

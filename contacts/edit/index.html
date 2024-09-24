@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Contact</title>
+    <title>Edit Contact - Address Book</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body
@@ -18,7 +18,7 @@
         <div class="flex md:flex-col gap-4">
           <a
             class="text-white hover:bg-orange-700 flex gap-2 border-2 border-white w-full p-2 md:p-3 rounded-md text-sm md:text-base"
-            href="/new/"
+            href="/contacts/new"
           >
             <img
               src="/assets/icons/plus.svg"
@@ -29,7 +29,7 @@
           </a>
           <a
             class="text-white hover:bg-orange-700 flex gap-2 border-2 border-white w-full p-2 md:p-3 rounded-md text-sm md:text-base"
-            href="/contact/"
+            href="/contacts/"
           >
             <img
               src="/assets/icons/person.svg"
@@ -53,7 +53,8 @@
           >
             Edit Contact
           </h1>
-          <form class="flex flex-col gap-4" id="contact-form-edit">
+
+          <form class="flex flex-col gap-4" id="edit-contact-form">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label for="first-name" hidden>First Name</label>
@@ -142,7 +143,7 @@
               rows="4"
             ></textarea>
             <button
-              onclick="updateData()"
+              type="submit"
               class="bg-orange-700 text-white p-2 hover:bg-orange-600 transition duration-300 rounded-md md:w-auto"
             >
               Edit
@@ -154,5 +155,9 @@
     </div>
 
     <script src="/app.js"></script>
+    <script>
+      renderEditContact();
+      editContactFormElement.addEventListener("submit", editContactById);
+    </script>
   </body>
 </html>
