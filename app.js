@@ -9,7 +9,7 @@ const contactPageListTableBodyElement = document.getElementById("contact-list");
 const contactPageCountElement = document.getElementById("contact-count");
 const searchInput = document.getElementById("search-input");
 
-const contactFormElementEdit = document.getElementById("contact-form-edit");
+const editContactFormElement = document.getElementById("contact-form-edit");
 
 const addContactFormElement = document.getElementById("contact-form");
 
@@ -71,7 +71,7 @@ async function deleteContactById(id) {
       method: "DELETE",
     });
     if (!response.ok) {
-      throw new Error("Gagal menghapus kontak");
+      throw new Error("Failed to delete contact");
     }
     const json = await response.json();
     renderContacts();
@@ -107,14 +107,14 @@ async function renderContacts() {
       <button onclick="deleteContactById(${
         contact.id
       })" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 my-2 rounded">
-        Hapus
+        Delete
       </button>
-      <button onclick="fetchContactEditIds(${
+      <button onclick="getContactById(${
         contact.id
       })" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 my-2 rounded">
         Edit
       </button>
-      <button onclick="fetchContactViewIds(${
+      <button onclick="getContactViewById(${
         contact.id
       })" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-2 rounded">
         View
@@ -125,11 +125,11 @@ async function renderContacts() {
     .join("");
 }
 
-function fetchContactEditIds(id) {
+function getContactById(id) {
   window.location.href = `/edit/?id=${id}`;
 }
 
-function fetchContactViewIds(id) {
+function getContactViewById(id) {
   window.location.href = `/contact/view/?id=${id}`;
 }
 
@@ -138,9 +138,9 @@ async function updateData() {
 
   try {
     const params = new URLSearchParams(window.location.search).get("id");
-    const formData = new FormData(contactFormElementEdit);
-    let fetchContactId = fetchContactEditIds;
-    console.log(fetchContactEditIds);
+    const formData = new FormData(editContactFormElement);
+    let fetchContactId = getContactById;
+    console.log(getContactById);
 
     const newContactData = {
       photoUrl: `https://api.dicebear.com/9.x/initials/svg?seed=${formData.get(
@@ -211,7 +211,7 @@ async function searchContact() {
       <button onclick="deleteContactById(${
         contact.id
       })" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-        Hapus
+        Delete
       </button>
       <button onclick="fetchContactIds(${
         contact.id

@@ -12,6 +12,19 @@
       "affiliation": "inovasiin",
       "jobTitle": "ceo",
       "notes": "24"
+    },
+    {
+      "id": 2,
+      "photoUrl": "https://api.dicebear.com/9.x/initials/svg?seed=aldi",
+      "fullName": "aldi santoso",
+      "nickName": "aldi",
+      "phone": "081234567890",
+      "email": "aldi.santoso@example.com",
+      "address": "Jalan Raya No. 123, Jakarta Selatan",
+      "birthday": "1990-01-01T00:00:00.000Z",
+      "affiliation": "Universitas Indonesia",
+      "jobTitle": "Software Engineer",
+      "notes": ""
     }
   ],
   "profile": {
