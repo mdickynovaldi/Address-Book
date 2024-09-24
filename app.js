@@ -156,7 +156,7 @@ async function updateData() {
       jobTitle: formData.get("job-title"),
       notes: formData.get("notes"),
     };
-    // Melakukan request PATCH ke server API
+
     const response = await fetch(`${BACKEND_API_URL}/contacts/${params}`, {
       method: "PATCH",
       headers: {
@@ -256,18 +256,17 @@ async function renderContactsHome() {
 async function viewContacstById(id) {
   try {
     const response = await fetch(`${BACKEND_API_URL}/contacts/${id}`);
-    const contact = await response.json(); // Ambil satu kontak
-    return contact; // Kembalikan data kontak
+    const contact = await response.json();
+    return contact;
   } catch (error) {
     console.error("Error:", error);
   }
 }
 
 async function renderContactsView() {
-  const params = new URLSearchParams(window.location.search).get("id"); // Ambil ID dari URL
-  const contact = await viewContacstById(params); // Panggil fungsi untuk mendapatkan kontak
+  const params = new URLSearchParams(window.location.search).get("id");
+  const contact = await viewContacstById(params);
   if (contact) {
-    // Pastikan kontak ada
     contactViewPageListTableBodyElement.innerHTML = `
       <tr>
         <td class="py-2 px-4">${contact.id}</td>
