@@ -1,15 +1,20 @@
 // const BACKEND_API_URL = "https://my-json-server.typicode.com/mdickynovaldi/address-book";
 const BACKEND_API_URL = "http://localhost:3000";
 
-const homeContactFormElement = document.getElementById("contact-form-home");
 const homeContactListTableBodyElement =
   document.getElementById("contact-list-home");
 const homeContactsCountElement = document.getElementById("contacts-count-home");
 
 const contactPageListTableBodyElement = document.getElementById("contact-list");
 const contactPageCountElement = document.getElementById("contact-count");
-
 const searchInput = document.getElementById("search-input");
+
+const contactFormElementEdit = document.getElementById("contact-form-edit");
+
+const addContactFormElement = document.getElementById("contact-form");
+
+const contactViewPageListTableBodyElement =
+  document.getElementById("contact-list-view");
 
 async function getContacts() {
   try {
@@ -25,7 +30,7 @@ async function getContacts() {
 async function addNewContact() {
   event.preventDefault();
 
-  const formData = new FormData(contactFormElement);
+  const formData = new FormData(addContactFormElement);
 
   const lastId = await getContacts();
 
@@ -101,13 +106,18 @@ async function renderContacts() {
     <td class="py-2 px-4">
       <button onclick="deleteContactById(${
         contact.id
-      })" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+      })" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 my-2 rounded">
         Hapus
       </button>
-      <button onclick="fetchContactIds(${
+      <button onclick="fetchContactEditIds(${
         contact.id
-      })" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+      })" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 my-2 rounded">
         Edit
+      </button>
+      <button onclick="fetchContactViewIds(${
+        contact.id
+      })" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-2 rounded">
+        View
       </button>
     </td>
   </tr>`;
@@ -115,8 +125,12 @@ async function renderContacts() {
     .join("");
 }
 
-function fetchContactIds(id) {
+function fetchContactEditIds(id) {
   window.location.href = `/edit/?id=${id}`;
+}
+
+function fetchContactViewIds(id) {
+  window.location.href = `/contact/view/?id=${id}`;
 }
 
 async function updateData() {
@@ -124,9 +138,9 @@ async function updateData() {
 
   try {
     const params = new URLSearchParams(window.location.search).get("id");
-    const formData = new FormData(contactFormElement);
-    let fetchContactId = fetchContactIds;
-    console.log(fetchContactId);
+    const formData = new FormData(contactFormElementEdit);
+    let fetchContactId = fetchContactEditIds;
+    console.log(fetchContactEditIds);
 
     const newContactData = {
       photoUrl: `https://api.dicebear.com/9.x/initials/svg?seed=${formData.get(
@@ -239,5 +253,42 @@ async function renderContactsHome() {
     .join("");
 }
 
+async function viewContacstById(id) {
+  try {
+    const response = await fetch(`${BACKEND_API_URL}/contacts/${id}`);
+    const contact = await response.json(); // Ambil satu kontak
+    return contact; // Kembalikan data kontak
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+async function renderContactsView() {
+  const params = new URLSearchParams(window.location.search).get("id"); // Ambil ID dari URL
+  const contact = await viewContacstById(params); // Panggil fungsi untuk mendapatkan kontak
+  if (contact) {
+    // Pastikan kontak ada
+    contactViewPageListTableBodyElement.innerHTML = `
+      <tr>
+        <td class="py-2 px-4">${contact.id}</td>
+        <td class="py-2 px-4"><img src="${
+          contact.photoUrl
+        }" alt="Photo" class="w-10 h-10 rounded-full"/></td>
+        <td class="py-2 px-4">${contact.fullName}</td>
+        <td class="py-2 px-4 md:table-cell">${contact.nickName}</td>
+        <td class="py-2 px-4 md:table-cell">${contact.phone}</td>
+        <td class="py-2 px-4 md:table-cell">${contact.email}</td>
+        <td class="py-2 px-4 md:table-cell">${contact.address}</td>
+        <td class="py-2 px-4 md:table-cell">${contact.affiliation}</td>
+        <td class="py-2 px-4 md:table-cell">${contact.jobTitle}</td>
+        <td class="py-2 px-4 md:table-cell">${new Date(
+          contact.birthday
+        ).toLocaleDateString()}</td>
+        <td class="py-2 px-4 md:table-cell">${contact.notes}</td>
+      </tr>`;
+  }
+}
+
 renderContacts();
 renderContactsHome();
+renderContactsView();

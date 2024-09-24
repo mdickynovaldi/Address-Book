@@ -53,7 +53,7 @@
           >
             Add Contact
           </h1>
-          <form class="flex flex-col gap-4" id="contact-form-home">
+          <form class="flex flex-col gap-4" id="contact-form">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label for="first-name" hidden>First Name</label>
@@ -61,6 +61,7 @@
                   id="first-name"
                   name="first-name"
                   type="text"
+                  value="aldi"
                   placeholder="First Name"
                   class="p-2 rounded-md border border-gray-300 w-full"
                 />
@@ -71,6 +72,7 @@
                   id="last-name"
                   name="last-name"
                   type="text"
+                  value="santoso"
                   placeholder="Last Name"
                   class="p-2 rounded-md border border-gray-300 w-full"
                 />
@@ -81,6 +83,7 @@
               placeholder="Nick Name"
               class="p-2 rounded-md border border-gray-300 w-full"
               id="nick-name"
+              value="aldi"
               name="nick-name"
             />
             <div id="phone-container" class="flex flex-col gap-2">
@@ -90,6 +93,7 @@
                   placeholder="Phone"
                   class="p-2 rounded-md border border-gray-300 w-full"
                   name="phone"
+                  value="081234567890"
                   id="phone"
                 />
               </div>
@@ -100,6 +104,7 @@
                 <input
                   type="email"
                   placeholder="Email"
+                  value="aldi.santoso@example.com"
                   class="p-2 rounded-md border border-gray-300 w-full"
                   name="email"
                   id="email"
@@ -112,6 +117,7 @@
               placeholder="Address"
               class="p-2 rounded-md border border-gray-300 w-full"
               id="address"
+              value="Jalan Raya No. 123, Jakarta Selatan"
               name="address"
             />
             <input
@@ -119,6 +125,7 @@
               placeholder="Affiliation"
               class="p-2 rounded-md border border-gray-300 w-full"
               id="affiliation"
+              value="Universitas Indonesia"
               name="affiliation"
             />
             <input
@@ -126,12 +133,14 @@
               placeholder="Job Title"
               class="p-2 rounded-md border border-gray-300 w-full"
               id="job-title"
+              value="Software Engineer"
               name="job-title"
             />
             <input
               class="p-2 rounded-md border border-gray-300 w-full"
               type="date"
               name="birthday"
+              value="1990-01-01"
               id="birthday"
             />
             <textarea
