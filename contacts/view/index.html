@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Contact - Address Book</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-gray-800 p-4 md:p-8 lg:p-14 flex flex-col md:flex-row gap-6 md:gap-10"
+  >
+    <!-- Navbar -->
+    <nav class="w-full md:w-64">
+      <div class="container flex flex-row gap-4 md:flex-col md:gap-10">
+        <a href="/" class="text-2xl md:text-3xl font-bold text-white">
+          Address Book
+        </a>
+        <div class="flex md:flex-col gap-4">
+          <a
+            class="text-white hover:bg-orange-700 flex gap-2 border-2 border-white w-full p-2 md:p-3 rounded-md text-sm md:text-base"
+            href="/contacts/new"
+          >
+            <img
+              src="/assets/icons/plus.svg"
+              alt="Add Icon"
+              class="w-4 h-4 md:w-6 md:h-6"
+            />
+            <span class="hidden md:inline">Add Contact</span>
+          </a>
+          <a
+            class="text-white hover:bg-orange-700 flex gap-2 border-2 border-white w-full p-2 md:p-3 rounded-md text-sm md:text-base"
+            href="/contacts/"
+          >
+            <img
+              src="/assets/icons/person.svg"
+              alt="Person Icon"
+              class="w-4 h-4 md:w-6 md:h-6"
+            />
+            <span class="hidden md:inline">All Contacts</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <div class="container flex flex-col gap-6 md:gap-10 w-full">
+      <div class="flex flex-col gap-6 md:gap-10">
+        <!-- List Contact -->
+        <div class="bg-gray-100 p-4 rounded-md flex flex-col gap-6 md:gap-10">
+          <div id="contacts" class="bg-gray-100 p-4 rounded-lg shadow-md">
+            <img
+              src="https://api.dicebear.com/9.x/initials/svg?seed=aldi"
+              alt="Photo"
+              class="w-32 h-32 rounded-full mx-auto mb-4"
+            />
+            <h1 class="text-center text-2xl font-bold mb-4">Nama</h1>
+            <div class="flex flex-col gap-4">
+              <div class="flex gap-2">
+                <span class="text-gray-600">Full Name:</span>
+                <span class="font-bold">Elon Musk</span>
+              </div>
+
+              <div class="flex gap-2">
+                <span class="text-gray-600">Phone:</span>
+                <span class="font-bold">081234567890</span>
+              </div>
+              <div class="flex gap-2">
+                <span class="text-gray-600">Email:</span>
+                <span class="font-bold">aldi.santoso@example.com</span>
+              </div>
+              <div class="flex gap-2">
+                <span class="text-gray-600">Address:</span>
+                <span class="font-bold"
+                  >Jalan Raya No. 123, Jakarta Selatan</span
+                >
+              </div>
+              <div class="flex gap-2">
+                <span class="text-gray-600">Date of Birth:</span>
+                <span class="font-bold">1 January 1990</span>
+              </div>
+              <div class="flex gap-2">
+                <span class="text-gray-600">Affiliation:</span>
+                <span class="font-bold">University of Indonesia</span>
+              </div>
+              <div class="flex gap-2">
+                <span class="text-gray-600">Job Title:</span>
+                <span class="font-bold">Software Engineer</span>
+              </div>
+              <div class="flex gap-2">
+                <span class="text-gray-600">Notes:</span>
+                <span class="font-bold"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End List Contact -->
+
+    <script src="/app.js"></script>
+    <script>
+      renderContactsView();
+    </script>
+  </body>
+</html>

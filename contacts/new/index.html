@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Contact</title>
+    <title>Add New Contact - Address Book</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body
@@ -18,7 +18,7 @@
         <div class="flex md:flex-col gap-4">
           <a
             class="text-white hover:bg-orange-700 flex gap-2 border-2 border-white w-full p-2 md:p-3 rounded-md text-sm md:text-base"
-            href="/new/"
+            href="/contacts/new"
           >
             <img
               src="/assets/icons/plus.svg"
@@ -29,7 +29,7 @@
           </a>
           <a
             class="text-white hover:bg-orange-700 flex gap-2 border-2 border-white w-full p-2 md:p-3 rounded-md text-sm md:text-base"
-            href="/contact/"
+            href="/contacts/"
           >
             <img
               src="/assets/icons/person.svg"
@@ -51,9 +51,10 @@
             id="Tambah"
             class="text-2xl md:text-3xl text-center font-bold mb-4"
           >
-            Edit Contact
+            Add Contact
           </h1>
-          <form class="flex flex-col gap-4" id="contact-form-edit">
+
+          <form class="flex flex-col gap-4" id="new-contact-form">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label for="first-name" hidden>First Name</label>
@@ -61,6 +62,7 @@
                   id="first-name"
                   name="first-name"
                   type="text"
+                  value="aldi"
                   placeholder="First Name"
                   class="p-2 rounded-md border border-gray-300 w-full"
                 />
@@ -71,6 +73,7 @@
                   id="last-name"
                   name="last-name"
                   type="text"
+                  value="santoso"
                   placeholder="Last Name"
                   class="p-2 rounded-md border border-gray-300 w-full"
                 />
@@ -81,6 +84,7 @@
               placeholder="Nick Name"
               class="p-2 rounded-md border border-gray-300 w-full"
               id="nick-name"
+              value="aldi"
               name="nick-name"
             />
             <div id="phone-container" class="flex flex-col gap-2">
@@ -90,6 +94,7 @@
                   placeholder="Phone"
                   class="p-2 rounded-md border border-gray-300 w-full"
                   name="phone"
+                  value="081234567890"
                   id="phone"
                 />
               </div>
@@ -100,6 +105,7 @@
                 <input
                   type="email"
                   placeholder="Email"
+                  value="aldi.santoso@example.com"
                   class="p-2 rounded-md border border-gray-300 w-full"
                   name="email"
                   id="email"
@@ -112,6 +118,7 @@
               placeholder="Address"
               class="p-2 rounded-md border border-gray-300 w-full"
               id="address"
+              value="Jalan Raya No. 123, Jakarta Selatan"
               name="address"
             />
             <input
@@ -119,6 +126,7 @@
               placeholder="Affiliation"
               class="p-2 rounded-md border border-gray-300 w-full"
               id="affiliation"
+              value="Universitas Indonesia"
               name="affiliation"
             />
             <input
@@ -126,12 +134,14 @@
               placeholder="Job Title"
               class="p-2 rounded-md border border-gray-300 w-full"
               id="job-title"
+              value="Software Engineer"
               name="job-title"
             />
             <input
               class="p-2 rounded-md border border-gray-300 w-full"
               type="date"
               name="birthday"
+              value="1990-01-01"
               id="birthday"
             />
             <textarea
@@ -142,10 +152,10 @@
               rows="4"
             ></textarea>
             <button
-              onclick="updateData()"
+              type="submit"
               class="bg-orange-700 text-white p-2 hover:bg-orange-600 transition duration-300 rounded-md md:w-auto"
             >
-              Edit
+              Add Contact
             </button>
           </form>
         </div>
@@ -154,5 +164,8 @@
     </div>
 
     <script src="/app.js"></script>
+    <script>
+      addContactFormElement.addEventListener("submit", addNewContact);
+    </script>
   </body>
 </html>

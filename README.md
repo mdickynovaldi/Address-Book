@@ -26,6 +26,44 @@ The Address Book Website is a web application that allows users to store, manage
 2. Open the `index.html` file in your web browser.
 3. For development, you can use your preferred text editor to edit the HTML, CSS, and JavaScript files.
 
+## Run the local Backend REST API server
+
+```sh
+bunx json-server db.json
+```
+
+## Pages
+
+Previous:
+
+| Path                  | Description          |
+| --------------------- | -------------------- |
+| `/`                   | Home or all contacts |
+| `/contacts`           | All contacts         |
+| `/contacts/view?id=1` | View contact by id   |
+| `/new/`               | Add new contact      |
+| `/edit?id=1`          | Edit contact by id   |
+
+Next:
+
+| Path                  | Description          |
+| --------------------- | -------------------- |
+| `/`                   | Home or all contacts |
+| `/contacts`           | All contacts         |
+| `/contacts/new`       | Add new contact      |
+| `/contacts/view?id=1` | View contact by id   |
+| `/contacts/edit?id=1` | Edit contact by id   |
+
+React:
+
+| Path               | Description          |
+| ------------------ | -------------------- |
+| `/`                | Home or all contacts |
+| `/contacts`        | All contacts         |
+| `/contacts/new`    | Add new contact      |
+| `/contacts/1`      | View contact by id   |
+| `/contacts/1/edit` | Edit contact by id   |
+
 ## Contribution
 
 Contributions are always welcome. If you want to contribute to this project, please create a pull request or open an issue for discussion of new features or bug fixes.
