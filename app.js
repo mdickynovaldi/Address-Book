@@ -5,7 +5,8 @@ const BACKEND_API_URL = "http://localhost:3000";
 const contactsCountElement = document.getElementById("contacts-count");
 
 // Home Page
-const homeContactListTableBodyElement = document.getElementById("contacts");
+const homeContactListTableBodyElement =
+  document.getElementById("home-contacts");
 
 // View All Contacts Page
 const contactsPageListTableBodyElement = document.getElementById("contacts");
@@ -61,10 +62,12 @@ async function fetchAddNewContact(newContactData) {
 
 async function fetchDeleteContactById(id) {
   try {
+    console.log({ id });
     const response = await fetch(`${BACKEND_API_URL}/contacts/${id}`, {
       method: "DELETE",
     });
     const deletedContact = await response.json();
+
     return deletedContact;
   } catch (error) {
     console.error("Error:", error);
@@ -74,6 +77,53 @@ async function fetchDeleteContactById(id) {
 /**
  * Render UI
  */
+
+async function renderContactsHome() {
+  const contacts = await fetchContacts();
+
+  const keyword = new URLSearchParams(window.location.search).get("q");
+
+  const filteredContacts = contacts.filter(
+    (contact) =>
+      contact.fullName.toLowerCase().includes(keyword) ||
+      contact.nickName.toLowerCase().includes(keyword)
+  );
+
+  const contactsToRender = keyword ? filteredContacts : contacts;
+  const contactsCount = contactsToRender.length;
+
+  contactsCountElement.innerText = contactsCount;
+
+  if (contactsCount === 0) {
+    homeContactListTableBodyElement.innerHTML = `<tr>No contacts found</tr>`;
+    return null;
+  }
+
+  homeContactListTableBodyElement.innerHTML = contactsToRender
+    .map((contact) => {
+      return `<tr>
+      <td class="py-2 px-4">${contact.id}</td>
+  
+      <td class="py-2 px-4">
+        <img src="${contact.photoUrl}"
+             alt="Photo" class="w-10 h-10 rounded-full"/>
+      </td>
+  
+      <td class="py-2 px-4">${contact.fullName}</td>
+      <td class="py-2 px-4  md:table-cell">${contact.nickName}</td>
+      <td class="py-2 px-4  md:table-cell">${contact.phone}</td>
+      <td class="py-2 px-4  md:table-cell">${contact.email}</td>
+      <td class="py-2 px-4  md:table-cell">${contact.address}</td>
+      <td class="py-2 px-4  md:table-cell">${contact.affiliation}</td>
+      <td class="py-2 px-4  md:table-cell">${contact.jobTitle}</td>
+      <td class="py-2 px-4  md:table-cell">
+        ${new Date(contact.birthday).toLocaleDateString()}
+      </td>
+      <td class="py-2 px-4  md:table-cell">${contact.notes}</td>
+    </tr>`;
+    })
+    .join("");
+}
 
 async function renderContacts() {
   const contacts = await fetchContacts();
@@ -118,22 +168,25 @@ async function renderContacts() {
     </td>
     <td class="py-2 px-4  md:table-cell">${contact.notes}</td>
 
-    <td class="py-2 px-4">
-      <button onclick="deleteContactById(${
-        contact.id
-      })" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 my-2 rounded">
-        Delete
-      </button>
+    <td class="py-5 px-4">
+        <button onclick="fetchDeleteContactById('${contact.id}')" 
+          class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"> 
+          Delete
+        </button>
 
-      <a href="/contacts/edit/?id=${contact.id}"
-         class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 my-2 rounded">
-        Edit
-      </a>
+      <div class="my-6">
+        <a href="/contacts/edit/?id=${contact.id}"
+           class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+          Edit
+        </a>
+      </div>
 
-      <a href="/contacts/view/?id=${contact.id}"
-         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-2 rounded">
-        View
-      </a>
+      <div class="my-6">
+        <a href="/contacts/view/?id=${contact.id}"
+           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ">
+          View
+        </a>
+      </div>
     </td>
   </tr>`;
     })
@@ -142,29 +195,65 @@ async function renderContacts() {
 
 async function renderContactsView() {
   const id = new URLSearchParams(window.location.search).get("id");
-  if (!id) return null;
+  if (!id) {
+    console.log("ID contact not found");
+    return null;
+  }
 
   const contact = await fetchContactById(id);
-  if (!id) return null; // TODO: Render contact not found
+  if (!contact) {
+    contactViewPageListTableBodyElement.innerHTML = `<tr>
+      <td class="py-2 px-4">not found</td>
+    </tr>`;
+    return null;
+  } // Memastikan kontak ditemukan
 
   contactViewPageListTableBodyElement.innerHTML = `
-    <tr>
-      <td class="py-2 px-4">${contact.id}</td>
-      <td class="py-2 px-4"><img src="${
-        contact.photoUrl
-      }" alt="Photo" class="w-10 h-10 rounded-full"/></td>
-      <td class="py-2 px-4">${contact.fullName}</td>
-      <td class="py-2 px-4 md:table-cell">${contact.nickName}</td>
-      <td class="py-2 px-4 md:table-cell">${contact.phone}</td>
-      <td class="py-2 px-4 md:table-cell">${contact.email}</td>
-      <td class="py-2 px-4 md:table-cell">${contact.address}</td>
-      <td class="py-2 px-4 md:table-cell">${contact.affiliation}</td>
-      <td class="py-2 px-4 md:table-cell">${contact.jobTitle}</td>
-      <td class="py-2 px-4 md:table-cell">${new Date(
-        contact.birthday
-      ).toLocaleDateString()}</td>
-      <td class="py-2 px-4 md:table-cell">${contact.notes}</td>
-    </tr>`;
+    <img
+              src="${contact.photoUrl}"
+              alt="Photo"
+              class="w-32 h-32 rounded-full mx-auto mb-4"
+            />
+            <h1 class="text-center text-2xl font-bold mb-4">${
+              contact.nickName
+            }</h1>
+            <div class="flex flex-col gap-4">
+              <div class="flex gap-2">
+                <span class="text-gray-600">Full Name:</span>
+                <span class="font-bold">${contact.fullName}</span>
+              </div>
+
+              <div class="flex gap-2">
+                <span class="text-gray-600">Phone:</span>
+                <span class="font-bold">${contact.phone}</span>
+              </div>
+              <div class="flex gap-2">
+                <span class="text-gray-600">Email:</span>
+                <span class="font-bold">${contact.email}</span>
+              </div>
+              <div class="flex gap-2">
+                <span class="text-gray-600">Address:</span>
+                <span class="font-bold">${contact.address}</span>
+              </div>
+              <div class="flex gap-2">
+                <span class="text-gray-600">Date of Birth:</span>
+                <span class="font-bold">${new Date(
+                  contact.birthday
+                ).toLocaleDateString()}</span>
+              </div>
+              <div class="flex gap-2">
+                <span class="text-gray-600">Affiliation:</span>
+                <span class="font-bold">${contact.affiliation}</span>
+              </div>
+              <div class="flex gap-2">
+                <span class="text-gray-600">Job Title:</span>
+                <span class="font-bold">${contact.jobTitle}</span>
+              </div>
+              <div class="flex gap-2">
+                <span class="text-gray-600">Notes:</span>
+                <span class="font-bold">${contact.notes}</span>
+              </div>
+            </div>`;
 }
 
 async function renderEditContact() {
@@ -176,7 +265,6 @@ async function renderEditContact() {
 
   // TODO: Separate full name into first name & last name, choose either strategy
   editContactFormElement.querySelector("#first-name").value = contact.fullName;
-  editContactFormElement.querySelector("#last-name").value = contact.fullName;
   editContactFormElement.querySelector("#nick-name").value = contact.nickName;
   editContactFormElement.querySelector("#phone").value = contact.phone;
   editContactFormElement.querySelector("#email").value = contact.email;
@@ -186,19 +274,6 @@ async function renderEditContact() {
   editContactFormElement.querySelector("#job-title").value = contact.jobTitle;
   editContactFormElement.querySelector("#birthday").value = contact.birthday; // TODO: Format date
   editContactFormElement.querySelector("#notes").value = contact.notes;
-
-  // TODO: Refactor to be cleaner to rely on the contact
-  // const formData = new FormData(editContactFormElement);
-  // formData.set("first-name", contact.fullName);
-  // formData.set("last-name", contact.fullName);
-  // formData.set("nick-name", contact.nickName);
-  // formData.set("phone", contact.phone);
-  // formData.set("email", contact.email);
-  // formData.set("address", contact.address);
-  // formData.set("affiliation", contact.affiliation);
-  // formData.set("job-title", contact.jobTitle);
-  // formData.set("birthday", contact.birthday); // TODO: Format date
-  // formData.set("notes", contact.notes);
 }
 
 /**
@@ -231,15 +306,6 @@ async function addNewContact(event) {
   window.location.href = `/contacts/view/?id=${newContact.id}`;
 }
 
-async function deleteContactById(id) {
-  const deletedContact = await fetchDeleteContactById(id);
-  if (!deletedContact) return null;
-
-  // TODO: Toast / Notification
-
-  renderContacts();
-}
-
 async function editContactById(event) {
   event.preventDefault();
 
@@ -252,7 +318,7 @@ async function editContactById(event) {
       photoUrl: `https://api.dicebear.com/9.x/initials/svg?seed=${formData.get(
         "first-name"
       )}`,
-      fullName: `${formData.get("first-name")} ${formData.get("last-name")}`,
+      fullName: `${formData.get("first-name")}`,
       nickName: formData.get("nick-name"),
       phone: formData.get("phone"),
       email: formData.get("email"),

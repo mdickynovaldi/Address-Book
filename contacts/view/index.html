@@ -46,30 +46,51 @@
     <div class="container flex flex-col gap-6 md:gap-10 w-full">
       <div class="flex flex-col gap-6 md:gap-10">
         <!-- List Contact -->
-        <div class="bg-white p-4 rounded-md flex flex-col gap-6 md:gap-10">
-          <h1 class="text-2xl md:text-3xl text-center font-bold">
-            <!-- Full Name -->
-          </h1>
+        <div class="bg-gray-100 p-4 rounded-md flex flex-col gap-6 md:gap-10">
+          <div id="contacts" class="bg-gray-100 p-4 rounded-lg shadow-md">
+            <img
+              src="https://api.dicebear.com/9.x/initials/svg?seed=aldi"
+              alt="Photo"
+              class="w-32 h-32 rounded-full mx-auto mb-4"
+            />
+            <h1 class="text-center text-2xl font-bold mb-4">Nama</h1>
+            <div class="flex flex-col gap-4">
+              <div class="flex gap-2">
+                <span class="text-gray-600">Full Name:</span>
+                <span class="font-bold">Elon Musk</span>
+              </div>
 
-          <div class="overflow-x-auto">
-            <table class="min-w-full bg-white">
-              <thead class="bg-orange-700 text-white text-left">
-                <tr>
-                  <th class="py-2 px-4">Id</th>
-                  <th class="py-2 px-4">Photo</th>
-                  <th class="py-2 px-4">Name</th>
-                  <th class="py-2 px-4">Nick Name</th>
-                  <th class="py-2 px-4">Telepon</th>
-                  <th class="py-2 px-4">Email</th>
-                  <th class="py-2 px-4">Address</th>
-                  <th class="py-2 px-4">Affiliation</th>
-                  <th class="py-2 px-4">Job Title</th>
-                  <th class="py-2 px-4">Birthday</th>
-                  <th class="py-2 px-4">Notes</th>
-                </tr>
-              </thead>
-              <tbody id="contacts"></tbody>
-            </table>
+              <div class="flex gap-2">
+                <span class="text-gray-600">Phone:</span>
+                <span class="font-bold">081234567890</span>
+              </div>
+              <div class="flex gap-2">
+                <span class="text-gray-600">Email:</span>
+                <span class="font-bold">aldi.santoso@example.com</span>
+              </div>
+              <div class="flex gap-2">
+                <span class="text-gray-600">Address:</span>
+                <span class="font-bold"
+                  >Jalan Raya No. 123, Jakarta Selatan</span
+                >
+              </div>
+              <div class="flex gap-2">
+                <span class="text-gray-600">Date of Birth:</span>
+                <span class="font-bold">1 January 1990</span>
+              </div>
+              <div class="flex gap-2">
+                <span class="text-gray-600">Affiliation:</span>
+                <span class="font-bold">University of Indonesia</span>
+              </div>
+              <div class="flex gap-2">
+                <span class="text-gray-600">Job Title:</span>
+                <span class="font-bold">Software Engineer</span>
+              </div>
+              <div class="flex gap-2">
+                <span class="text-gray-600">Notes:</span>
+                <span class="font-bold"></span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
