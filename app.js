@@ -68,6 +68,8 @@ async function fetchDeleteContactById(id) {
     });
     const deletedContact = await response.json();
 
+    renderContacts();
+
     return deletedContact;
   } catch (error) {
     console.error("Error:", error);

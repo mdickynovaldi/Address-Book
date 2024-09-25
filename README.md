@@ -54,16 +54,6 @@ Next:
 | `/contacts/view?id=1` | View contact by id   |
 | `/contacts/edit?id=1` | Edit contact by id   |
 
-React:
-
-| Path               | Description          |
-| ------------------ | -------------------- |
-| `/`                | Home or all contacts |
-| `/contacts`        | All contacts         |
-| `/contacts/new`    | Add new contact      |
-| `/contacts/1`      | View contact by id   |
-| `/contacts/1/edit` | Edit contact by id   |
-
 ## Contribution
 
 Contributions are always welcome. If you want to contribute to this project, please create a pull request or open an issue for discussion of new features or bug fixes.

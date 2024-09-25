@@ -55,9 +55,9 @@
           </h1>
 
           <form class="flex flex-col gap-4" id="edit-contact-form">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
               <div>
-                <label for="first-name" hidden>First Name</label>
+                <h1 class="text-lg font-bold mb-2">full Name</h1>
                 <input
                   id="first-name"
                   name="first-name"
@@ -67,18 +67,22 @@
                 />
               </div>
             </div>
-            <input
-              type="text"
-              placeholder="Nick Name"
-              class="p-2 rounded-md border border-gray-300 w-full"
-              id="nick-name"
-              name="nick-name"
-            />
+            <div>
+              <h1 class="text-lg font-bold mb-2">Nick Name</h1>
+              <input
+                type="text"
+                placeholder="Nick Name"
+                class="p-2 rounded-md border border-gray-300 w-full"
+                id="nick-name"
+                name="nick-name"
+              />
+            </div>
             <div id="phone-container" class="flex flex-col gap-2">
               <div>
+                <h1 class="text-lg font-bold mb-2">Phone Number</h1>
                 <input
                   type="text"
-                  placeholder="Phone"
+                  placeholder="Phone Number"
                   class="p-2 rounded-md border border-gray-300 w-full"
                   name="phone"
                   id="phone"
@@ -87,7 +91,8 @@
             </div>
 
             <div id="email-container" class="flex flex-col gap-2">
-              <div class="flex gap-2">
+              <div class="gap-2">
+                <h1 class="text-lg font-bold mb-2">Email</h1>
                 <input
                   type="email"
                   placeholder="Email"
@@ -98,40 +103,55 @@
               </div>
             </div>
 
-            <input
-              type="text"
-              placeholder="Address"
-              class="p-2 rounded-md border border-gray-300 w-full"
-              id="address"
-              name="address"
-            />
-            <input
-              type="text"
-              placeholder="Affiliation"
-              class="p-2 rounded-md border border-gray-300 w-full"
-              id="affiliation"
-              name="affiliation"
-            />
-            <input
-              type="text"
-              placeholder="Job Title"
-              class="p-2 rounded-md border border-gray-300 w-full"
-              id="job-title"
-              name="job-title"
-            />
-            <input
-              class="p-2 rounded-md border border-gray-300 w-full"
-              type="date"
-              name="birthday"
-              id="birthday"
-            />
-            <textarea
-              placeholder="Notes"
-              class="p-2 rounded-md border border-gray-300 w-full"
-              id="notes"
-              name="notes"
-              rows="4"
-            ></textarea>
+            <div>
+              <h1 class="text-lg font-bold mb-2">Address</h1>
+              <input
+                type="text"
+                placeholder="Address"
+                class="p-2 rounded-md border border-gray-300 w-full"
+                id="address"
+                name="address"
+              />
+            </div>
+            <div>
+              <h1 class="text-lg font-bold mb-2">Affiliation</h1>
+              <input
+                type="text"
+                placeholder="Affiliation"
+                class="p-2 rounded-md border border-gray-300 w-full"
+                id="affiliation"
+                name="affiliation"
+              />
+            </div>
+            <div>
+              <h1 class="text-lg font-bold mb-2">Job Title</h1>
+              <input
+                type="text"
+                placeholder="Job Title"
+                class="p-2 rounded-md border border-gray-300 w-full"
+                id="job-title"
+                name="job-title"
+              />
+            </div>
+            <div>
+              <h1 class="text-lg font-bold mb-2">Date of Birth</h1>
+              <input
+                class="p-2 rounded-md border border-gray-300 w-full"
+                type="date"
+                name="birthday"
+                id="birthday"
+              />
+            </div>
+            <div>
+              <h1 class="text-lg font-bold mb-2">Notes</h1>
+              <textarea
+                placeholder="Notes"
+                class="p-2 rounded-md border border-gray-300 w-full"
+                id="notes"
+                name="notes"
+                rows="4"
+              ></textarea>
+            </div>
             <button
               type="submit"
               class="bg-orange-700 text-white p-2 hover:bg-orange-600 transition duration-300 rounded-md md:w-auto"
